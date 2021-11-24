@@ -19,8 +19,16 @@
         <td><%= item.price %></td>
         <td><%= item.user.name %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <% if can? :update, item %>
+          <%= link_to 'Edit', edit_item_path(item) %>
+        <% end %>
+        </td>
+        <td>
+          <% if can? :destroy, item %>
+            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +36,6 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<% if can? :create, Item %>
+  <%= link_to 'New Item', new_item_path %>
+<% end %>

@@ -8,6 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+require('../src/index');
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
