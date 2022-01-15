@@ -28,3 +28,22 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
+rubocop:
+    executor: default
+    steps:
+      - attach_workspace:
+          at: ~/
+      - configure_bundler
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - build
+      - rubocop:
+          requires:
+            - build
+
