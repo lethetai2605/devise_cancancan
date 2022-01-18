@@ -35,6 +35,8 @@ end
 
 gem 'devise'
 gem 'cancancan'
+gem 'dotenv-rails'
+gem 'pg', '0.18.4'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
